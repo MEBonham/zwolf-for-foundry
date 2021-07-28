@@ -1,0 +1,22 @@
+{
+  "ZWOLF.AbilityStr": "Strength",
+  "ZWOLF.AbilityCon": "Constitution",
+  "ZWOLF.AbilityDex": "Dexterity",
+  "ZWOLF.AbilityInt": "Intelligence",
+  "ZWOLF.AbilityWis": "Wisdom",
+  "ZWOLF.AbilityCha": "Charisma",
+
+  "ZWOLF.AbilityStrAbbr": "str",
+  "ZWOLF.AbilityConAbbr": "con",
+  "ZWOLF.AbilityDexAbbr": "dex",
+  "ZWOLF.AbilityIntAbbr": "int",
+  "ZWOLF.AbilityWisAbbr": "wis",
+  "ZWOLF.AbilityChaAbbr": "cha",
+
+  "ZWOLF.EffectCreate": "Create Effect",
+  "ZWOLF.EffectToggle": "Toggle Effect",
+  "ZWOLF.EffectEdit": "Edit Effect",
+  "ZWOLF.EffectDelete": "Delete Effect",
+
+  "ZWOLF.Add": "Add"
+}
