@@ -2,72 +2,149 @@
   "Actor": {
     "types": ["character", "npc"],
     "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+      "common": {
+        "level": 1,
+        "epithet": "Creature",
+        "pools": {
+          "vp": {
+            "value": 7,
+            "max": 7
+          },
+          "sp": {
+            "value": 4,
+            "max": 4
+          }
         },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
+        "attributes": {
+          "av": {
+            "base": 3
+          },
+          "resval": {
+            "base": 4
+          },
+          "awe": {
+            "base": 4
+          },
+          "spellcraft": {
+            "base": 0
+          },
+          "speed": {
+            "base": 0,
+            "modes": ["walk"]
+          }
         },
-        "biography": ""
+        "saves": {
+          "def": {
+            "base": 0
+          },
+          "fort": {
+            "base": 0
+          },
+          "ref": {
+            "base": 2
+          },
+          "will": {
+            "base": 0
+          }
+        },
+        "skills": {
+          "athletics": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "brawn": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "charisma": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "dexterity": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "gadgetry": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "glibness": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "insight": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "knowledge": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "nature": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "perception": {
+            "ranks": 0,
+            "trained": 0
+          },
+          "stealth": {
+            "ranks": 0,
+            "trained": 0
+          }
+        },
+        "languages": ["Common"],
+        "config": {
+          "bestsave": "ref",
+          "fgtlvl": 0,
+          "cstlvl": 0,
+          "numkits": 2,
+          "numfeats": 1,
+          "numtalents": 4
+        },
+        "wealth": 0,
+        "coastnum": 4,
+        "biography": {
+          "appearance": "",
+          "motivations": "",
+          "quirks": ""
+        }
       }
     },
     "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
+      "templates": ["common"],
+      "pools": {
+        "kp": {
+          "value": 1,
+          "max": 2
         }
       },
-      "abilities": {
-        "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
-        },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
-        }
+      "complications": [],
+      "biography": {
+        "personality": "",
+        "personalhistory": "",
+        "relationships": "",
+        "property": ""
       }
     },
     "npc": {
-      "templates": ["base"],
-      "cr": 0
+      "templates": ["common"],
+      "biography": {
+        "ecology": "",
+        "tactics": ""
+      }
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-    },
-    "feature": {
-      "templates": ["base"]
-    },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
-    }
+    "types": ["kit", "feat", "talent", "verb", "consumable", "container", "item", "ritual"],
+    "templates": {},
+    "kit": {},
+    "feat": {},
+    "talent": {},
+    "verb": {},
+    "consumable": {},
+    "container": {},
+    "item": {},
+    "ritual": {}
   }
 }

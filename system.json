@@ -21,8 +21,8 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "vitality",
   "secondaryTokenAttribute": "karma",
-  "url": "",
-  "manifest": "",
-  "download": "",
+  "url": "https://github.com/MEBonham/zwolf-for-foundry",
+  "manifest": "https://raw.githubusercontent.com/MEBonham/zwolf-for-foundry/main/system.json",
+  "download": "https://github.com/MEBonham/zwolf-for-foundry/archive/refs/heads/main.zip",
   "license": "LICENSE.txt"
 }
