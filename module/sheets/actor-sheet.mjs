@@ -13,13 +13,14 @@ export class ZWolfActorSheet extends ActorSheet {
       template: "systems/zwolf/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
     });
   }
 
   /** @override */
   get template() {
-    return `systems/zwolf/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    // return `systems/zwolf/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/zwolf/templates/actor/actor-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -67,10 +68,10 @@ export class ZWolfActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
-    // Handle ability scores.
-    for (let [k, v] of Object.entries(context.data.abilities)) {
-      v.label = game.i18n.localize(CONFIG.ZWOLF.abilities[k]) ?? k;
-    }
+    // // Handle ability scores.
+    // for (let [k, v] of Object.entries(context.data.abilities)) {
+    //   v.label = game.i18n.localize(CONFIG.ZWOLF.abilities[k]) ?? k;
+    // }
   }
 
   /**
@@ -82,45 +83,76 @@ export class ZWolfActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
-    const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+    const verbs = {
+      attacks: [],
+      dominant: [],
+      maneuvers: [],
+      actions: [],
+      reactions: [],
+      free: [],
+      shortrest: [],
+      extrest: []
     };
+    const inventory = [];
+    const kits = [];
+    const feats = [];
+    const talents = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === 'item') {
-        gear.push(i);
-      }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
+      if (i.type === 'kit') {
+        kits.push(i);
+      } else if (i.type === 'feat') {
+        feats.push(i);
+        if (i.data.isattack) {
+          verbs.attacks.push(i);
+        } else if (i.data.activity === "1 [Dominant] Action") {
+          verbs.dominant.push(i);
+        } else if (i.data.activity === "1 [Maneuver] Action") {
+          verbs.maneuvers.push(i);
+        } else if (i.data.activity === "1 Reaction") {
+          verbs.reactions.push(i);
+        } else if (i.data.activity === "Free") {
+          verbs.free.push(i);
+        } else {
+          verbs.actions.push(i);
+        }
+      } else if (i.type === 'talent') {
+        talents.push(i);
+      } else if (i.type === 'verb') {
+        if (i.data.isattack) {
+          verbs.attacks.push(i);
+        } else if (i.data.activity === "1 [Dominant] Action") {
+          verbs.dominant.push(i);
+        } else if (i.data.activity === "1 [Maneuver] Action") {
+          verbs.maneuvers.push(i);
+        } else if (i.data.activity === "1 Reaction") {
+          verbs.reactions.push(i);
+        } else if (i.data.activity === "Free") {
+          verbs.free.push(i);
+        } else if (i.data.activity === "Short Rest") {
+          verbs.shortrest.push(i);
+        } else if (i.data.activity === "Extended Rest") {
+          verbs.extrest.push(i);
+        } else {
+          verbs.actions.push(i);
+        }
+      } else {
+        inventory.push(i);
+        if (i.data.isattack) {
+          verbs.attacks.push(i);
         }
       }
     }
 
     // Assign and return
-    context.gear = gear;
-    context.features = features;
-    context.spells = spells;
-   }
+    context.inventory = inventory;
+    context.verbs = verbs;
+    context.kits = kits;
+    context.feats = feats;
+    context.talents = talents;
+  }
 
   /* -------------------------------------------- */
 

@@ -33,6 +33,8 @@ export class ZWolfActor extends Actor {
     const data = actorData.data;
     const flags = actorData.flags.zwolf || {};
 
+    actorData.data.attributes.heroics = min(4, floor(actorData.data.level / 2));
+
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
@@ -48,11 +50,11 @@ export class ZWolfActor extends Actor {
     // Make modifications to data here. For example:
     const data = actorData.data;
 
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(data.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }
+    // // Loop through ability scores, and add their modifiers to our sheet output.
+    // for (let [key, ability] of Object.entries(data.abilities)) {
+    //   // Calculate the modifier using d20 rules.
+    //   ability.mod = Math.floor((ability.value - 10) / 2);
+    // }
   }
 
   /**
@@ -63,7 +65,7 @@ export class ZWolfActor extends Actor {
 
     // Make modifications to data here. For example:
     const data = actorData.data;
-    data.xp = (data.cr * data.cr) * 100;
+    // data.xp = (data.cr * data.cr) * 100;
   }
 
   /**
@@ -85,18 +87,18 @@ export class ZWolfActor extends Actor {
   _getCharacterRollData(data) {
     if (this.data.type !== 'character') return;
 
-    // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
+    // // Copy the ability scores to the top level, so that rolls can use
+    // // formulas like `@str.mod + 4`.
+    // if (data.abilities) {
+    //   for (let [k, v] of Object.entries(data.abilities)) {
+    //     data[k] = foundry.utils.deepClone(v);
+    //   }
+    // }
 
-    // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
-    }
+    // // Add level for easier access, or fall back to 0.
+    // if (data.attributes.level) {
+    //   data.lvl = data.attributes.level.value ?? 0;
+    // }
   }
 
   /**

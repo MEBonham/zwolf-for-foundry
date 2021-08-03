@@ -35,62 +35,88 @@
         },
         "saves": {
           "def": {
-            "base": 0
+            "base": 0,
+            "value": 0
           },
           "fort": {
-            "base": 0
+            "base": 0,
+            "value": 0
           },
           "ref": {
-            "base": 2
+            "base": 2,
+            "value": 0
           },
           "will": {
-            "base": 0
+            "base": 0,
+            "value": 0
           }
         },
         "skills": {
           "athletics": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Athletics"
           },
           "brawn": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Brawn"
           },
           "charisma": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Charisma"
           },
           "dexterity": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Dexterity"
           },
           "gadgetry": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Gadgetry"
           },
           "glibness": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Glibness"
           },
           "insight": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Insight"
           },
           "knowledge": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Knowledge"
           },
           "nature": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Nature"
           },
           "perception": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Perception"
           },
           "stealth": {
             "ranks": 0,
-            "trained": 0
+            "value": 0,
+            "trained": false,
+            "label": "Stealth"
           }
         },
         "languages": ["Common"],
@@ -104,10 +130,16 @@
         },
         "wealth": 0,
         "coastnum": 4,
+        "coasting": false,
         "biography": {
           "appearance": "",
           "motivations": "",
           "quirks": ""
+        },
+        "temp": {
+          "castingseed": "",
+          "momentum": false,
+          "exerted": false
         }
       }
     },
@@ -136,15 +168,113 @@
     }
   },
   "Item": {
-    "types": ["kit", "feat", "talent", "verb", "consumable", "container", "item", "ritual"],
-    "templates": {},
-    "kit": {},
-    "feat": {},
-    "talent": {},
-    "verb": {},
-    "consumable": {},
-    "container": {},
-    "item": {},
-    "ritual": {}
+    "types": ["kit", "feat", "talent", "verb", "consumable", "container", "weapon", "armor", "shield", "item", "ritual"],
+    "templates": {
+      "special": {
+        "tags": ["Core"],
+        "prereqs": "",
+        "expectation": "",
+        "benefits": [],
+        "drawbacks": []
+      },
+      "physicalitem": {
+        "description": "",
+        "price": 1,
+        "bulk": 1,
+        "hardness": 2,
+        "resistance": 6,
+        "strucsave": 0,
+        "location": ""
+      },
+      "attackable": {
+        "isattack": false,
+        "range": "Melee 1",
+        "impactmod": 0,
+        "damagetypes": ["Bludgeoning"],
+        "damagechoice": false,
+        "bleednum": 2
+      },
+      "magicitem": {
+        "attunes": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": ""
+        }
+      }
+    },
+    "kit": {
+      "templates": ["special"],
+      "archetypes": []
+    },
+    "feat": {
+      "templates": ["special"],
+      "activity": "1 [Dominant] Action",
+      "basicseeds": [],
+      "effect": "",
+      "basicseedeffects": {},
+      "advancedseeds": [],
+      "advancedeffect": "",
+      "advancedseedeffects": {},
+      "hazardmenu": [],
+      "emulation": ""
+    },
+    "talent": {
+      "templates": ["special"],
+      "normalnote": "",
+      "specialnote": ""
+    },
+    "verb": {
+      "templates": ["attackable"],
+      "activity": "1 [Dominant] Action",
+      "effect": "",
+      "hazardmenu": []
+    },
+    "consumable": {
+      "templates": ["physicalitem"],
+      "autodestroy": false,
+      "uses": {
+        "value": 1,
+        "max": 1
+      }
+    },
+    "container": {
+      "templates": ["physicalitem", "magicitem"],
+      "capacity": 10
+    },
+    "weapon": {
+      "templates": ["physicalitem", "attackable", "magicitem"],
+      "weapongrade": "Simple",
+      "heft": "One-Handed",
+      "weaponcategories": []
+    },
+    "armor": {
+      "templates": ["physicalitem", "magicitem"],
+      "armorgirth": "Light",
+      "encumbrance": 0,
+      "avbonus": 2
+    },
+    "shield": {
+      "templates": ["physicalitem", "attackable", "magicitem"],
+      "encumbrance": 0,
+      "defbonus": 2,
+      "shieldspecial": {},
+      "weapongrade": "Improvised",
+    },
+    "item": {
+      "templates": ["physicalitem", "attackable", "magicitem"],
+      "weapongrade": "Improvised",
+      "heft": "One-Handed"
+    },
+    "ritual": {
+      "tags": ["Copyable"],
+      "casterreq": 1,
+      "componentcost": 1,
+      "castingtime": "10 minutes",
+      "advanced": true,
+      "effect": ""
+    }
   }
 }

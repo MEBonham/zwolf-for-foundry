@@ -1,0 +1,232 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      <h2 class="subtitle">
+          Level
+          <span> </span>
+          <input name="level" type="text" value="{{data.level}}"  data-dtype="Number"/>
+          <span> </span>
+          <input name="epithet" type="text" value="{{data.epithet}}"  data-dtype="String"/>
+      </h2>
+      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+      use both the "grid" and "grid-Ncol" class where "N" can be any number
+      from 1 to 12 and will create that number of columns.  --}}
+      <div class="divider grid grid-2col">
+
+        <div class="always-stats">
+          
+          {{#is actor.type "character"}}
+          <div class="resources grid grid-3col">
+            {{!-- "flex-group-center" is also defined in the _grid.scss file
+            and it will add a small amount of padding, a border, and will
+            center all of its child elements content and text. --}}
+            <div class="resource flex-group-center">
+              <label for="data.pools.vp.value" class="resource-label">Vitality</label>
+              <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="data.pools.vp.value" value="{{data.pools.vp.value}}" data-dtype="Number"/>
+              <span> / </span>
+              <input type="text" name="data.pools.vp.max" value="{{data.pools.vp.max}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="resource flex-group-center">
+              <label for="data.pools.sp.value" class="resource-label">Stamina</label>
+              <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="data.pools.sp.value" value="{{data.pools.sp.value}}" data-dtype="Number"/>
+              <span> / </span>
+              <input type="text" name="data.pools.sp.max" value="{{data.pools.sp.max}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="resource flex-group-center">
+              <label for="data.pools.kp.value" class="resource-label">Karma</label>
+              <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="data.pools.kp.value" value="{{data.pools.kp.value}}" data-dtype="Number"/>
+              <span> / </span>
+              <input type="text" name="data.pools.kp.max" value="{{data.pools.kp.max}}" data-dtype="Number"/>
+              </div>
+            </div>
+          </div>
+          {{else}}
+          <div class="resources grid grid-2col">
+            <div class="resource flex-group-center">
+              <label for="data.pools.vp.value" class="resource-label">Vitality</label>
+              <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="data.pools.vp.value" value="{{data.pools.vp.value}}" data-dtype="Number"/>
+              <span> / </span>
+              <input type="text" name="data.pools.vp.max" value="{{data.pools.vp.max}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="resource flex-group-center">
+              <label for="data.pools.sp.value" class="resource-label">Stamina</label>
+              <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="data.pools.sp.value" value="{{data.pools.sp.value}}" data-dtype="Number"/>
+              <span> / </span>
+              <input type="text" name="data.pools.sp.max" value="{{data.pools.sp.max}}" data-dtype="Number"/>
+              </div>
+            </div>
+          </div>
+          {{/is}}
+
+          <div class="basics grid grid-5col">
+
+            <div class="basic flex-group-center">
+              <label for="data.attributes.av.base" class="basic-label">Armor Value</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.av.base" value="{{data.attributes.av.base}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.attributes.heroics" class="basic-label">Heroics Check</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.heroics" value="{{data.attributes.heroics}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.attributes.awe.base" class="basic-label">Awesome Check</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.awe.base" value="{{data.attributes.awe.base}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.attributes.speed.base" class="basic-label">Speed Check</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.speed.base" value="{{data.attributes.speed.base}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.attributes.spellcraft.base" class="basic-label">Spellcraft Check</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.spellcraft.base" value="{{data.attributes.spellcraft.base}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.attributes.resval.base" class="basic-label">Resistance Value</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.attributes.resval.base" value="{{data.attributes.resval.base}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.saves.def.value" class="basic-label">Defense Save</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.saves.def.value" value="{{data.saves.def.value}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.saves.fort.value" class="basic-label">Fortitude Save</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.saves.fort.value" value="{{data.saves.fort.value}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.saves.ref.value" class="basic-label">Reflex Save</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.saves.ref.value" value="{{data.saves.ref.value}}" data-dtype="Number"/>
+              </div>
+            </div>
+            <div class="basic flex-group-center">
+              <label for="data.saves.will.value" class="basic-label">Willpower Save</label>
+              <div class="basic-content flexrow flex-center flex-between">
+                <input type="text" name="data.saves.will.value" value="{{data.saves.will.value}}" data-dtype="Number"/>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="ephemeral">
+          <div class="basic flex-group-center">
+            <label for="data.temp.exerted" class="basic-label">Exerted?</label>
+            <div class="basic-content flexrow flex-center flex-between">
+              <input type="text" name="data.temp.exerted" value="{{data.temp.exerted}}" data-dtype="Boolean"/>
+            </div>
+          </div>
+          <div class="basic flex-group-center">
+            <label for="data.temp.momentum" class="basic-label">Momentum?</label>
+            <div class="basic-content flexrow flex-center flex-between">
+              <input type="text" name="data.temp.momentum" value="{{data.temp.momentum}}" data-dtype="Boolean"/>
+            </div>
+          </div>
+          <div class="basic flex-group-center">
+            <label for="data.coasting" class="basic-label">Coasting?</label>
+            <div class="basic-content flexrow flex-center flex-between">
+              <input type="text" name="data.coasting" value="{{data.coasting}}" data-dtype="Boolean"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="main">Main</a>
+    <a class="item" data-tab="inventory">Inventory</a>
+    <a class="item" data-tab="config">Configuration</a>
+    <a class="item" data-tab="bio">Biography</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Main Tab --}}
+    <div class="tab main" data-group="primary" data-tab="main">
+      <section class="grid grid-3col">
+        <aside class="sidebar">
+
+          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  --}}
+          <div class="skills flexcol">
+            {{#each data.skills as |skill key|}}
+            <div class="skill flexrow flex-group-center">
+              <label for="data.skills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="3d12kl2kh1+@skills.{{key}}.value" data-label="{{skill.label}}">{{skill.label}}</label>
+              <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+              <span class="skill-mod rollable" data-roll="3d12kl2kh1+@skills.{{key}}.value" data-label="{{skill.label}}">{{numberFormat skill.value decimals=0 sign=true}}</span>
+            </div>
+            {{/each}}
+          </div>
+        </aside>
+
+        {{!-- For the main features list, span the right two columns --}}
+        <section class="main grid-span-2">
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/zwolf/templates/actor/parts/actor-main.html"}}
+        </section>
+
+      </section>
+    </div>
+
+    {{!-- Inventory Tab --}}
+    <div class="tab inventory" data-group="primary" data-tab="inventory">
+       {{> "systems/zwolf/templates/actor/parts/actor-inventory.html"}}
+    </div>
+
+    {{!-- Configuration Tab --}}
+    <div class="tab config" data-group="primary" data-tab="config">
+      {{> "systems/zwolf/templates/actor/parts/actor-config.html"}}
+    </div>
+
+    {{!-- Biography Tab --}}
+    <div class="tab bio" data-group="primary" data-tab="bio">
+      {{!-- If you want TinyMCE editors to output inline rolls when rendered, you need to pass the actor's roll data to the rollData property. --}}
+      {{!-- editor content=data.biography target="data.biography" rollData=rollData button=true owner=owner editable=editable --}}
+    </div>
+
+    {{!-- Active Effects Tab --}}
+    <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+      {{> "systems/zwolf/templates/actor/parts/actor-effects.html"}}
+    </div>
+
+  </section>
+</form>
+
